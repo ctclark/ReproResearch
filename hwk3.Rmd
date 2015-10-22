@@ -9,7 +9,7 @@ output: html_document
 Out of fairness to others (and to me) I cannot accept late homework. I will subtract 0.5 points per day after the due date and will not accept homework that is more than a week late! If you have valid reasons such as field work, conferences, etc. that prevent you from turning in a homework on time, talk to me beforehand!</span>  
 
 #Fitting a LOWESS model and plotting results:  
-For this problem we will estimate average ozone values at different levels of wind and temperature (as well as different levels of solar radiation) and plot the resulting estimates as a smooth surface.
+For this problem we will estimate average ozone values at different levels of wind and temperature (as well as different levels of solar radiation) and plot the resulting estimates as a smooth surface. 
 
 **a.** 
 <span style="color:red">(1 pt.)</span>  Attach the *lattice* library and explore the ozone data in data frame "environmental". For simplicity, you may also want to attach the environmental data frame, but make sure you enderstand what happens when you do! 
