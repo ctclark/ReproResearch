@@ -324,12 +324,27 @@ Create a plot of the fitted values at different combinations of wind and tempera
 different levels of radiation:
 
 ```{r j, eval=FALSE}
+rad <- seq(min(radiation), max(radiation), length = 4)  #create a vector of 4 radiation values
+grd <- expand.grid(list(wind = wnd, temperature = temp, radiation = rad))
+    #Add radiation values to the grid
+
+pred <- predict(ozo2, grd) #Predict ozone values based on ozo2 model
+grd[,"fit"] <- c(pred) #Add them to the grid. I think the .pdf has a typo here (no "c()")
+
 contourplot(fit ~ wind * temperature | radiation, data = grd,
  cuts = 10, region = TRUE,
  xlab = "Wind Speed (mph)",
  ylab = "Temperature (F)",
  main = "Cube Root Ozone (cube root ppb)",
  col.regions = terrain.colors(50))
+            cuts = 10, region = TRUE, xlab = "Wind Speed (mph)",
+            ylab = "Temperature (F)", main = "Cube Root Ozone (cube root ppb)",
+            col.regions = terrain.colors(50))
+
+#Estimated ozone levels are lowest at the lowest level of solar radiation (plot is dominated
+#by green), then increase with increasing radiation (green shrinks, yellow and orange become
+#more apparent) and is highest at low wind speeds and high temperatures (left side and top
+#of plot)
 ```
 
 In the resulting figure, the solar radiation level increases from the lower left panel to the upper 
