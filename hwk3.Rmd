@@ -204,7 +204,27 @@ x,y,z values as ```image```, but be sure to set ```add=T``` to add contours to t
 
 <span style="color:blue"> Comment on the ability of the model to estimate ozone levels at a wind speed of 20mph when temperatures are in the 80s or 90s!</span> 
 ```{r g}
+par(mfrow=c(1,1))  #Return graphics frame to one panel
 
+wnd <- seq(from = min(wind), to = max(wind), length.out = 50)
+                   #Create a vector of values spanning the range of the wind values
+temp <- seq(from = min(temperature), to = max(temperature), length.out = 50)
+                   #Create a vector of values spanning the range of the temperature values
+
+grd <- expand.grid(wind = wnd, temperature = temp)  #Combine the values into a matrix (2D surface)
+
+ozo1.fit <- predict(ozo1, newdata = grd) #Create predicted values for all points across the surface
+
+image(wnd, temp, ozo1.fit, col = terrain.colors(50)) #create an image with wind on the
+        #x axis, temperature on the y axis, and predicted ozone values as the z values
+contour(wnd, temp, ozo1.fit, add=T)  #add contour lines
+
+points(wind, temperature, pch = 16, cex=1)  #plot the points where measurements were taken
+
+#The actual data tend towards the middle of the plot with very few data points for
+#weak winds/low temperatures and strong winds/high temperatures. Thus, the bottom left
+#and top right corners of the surface may be suspect.  This appears to be especially true
+#for strong winds (~20 mph) at high temps (80-90 degrees), where contours show a steep increase
 ```
 
 **h.**
