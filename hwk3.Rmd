@@ -59,7 +59,11 @@ transformed scale!!) against the fitted values. Add a 1:1 line to the plot (inte
 would denote a perfect fit (i.e. a 1:1 correspondence):  
 ```abline(0,1)```
 ```{r c}
+fitted(ozo1) #extract and look at fitted values
+resid(ozo1)  #extract and look at residuals
 
+plot(ozo.trans ~ fitted(ozo1)) #plot the transformed ozone values against the fitted values
+abline(0,1) #add a 1:1 line. The relationship is pretty close to 1:1.
 ```
 
 **d.**
