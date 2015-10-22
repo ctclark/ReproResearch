@@ -111,7 +111,11 @@ Verify that the sum of the fitted values and the residuals is equal to the obser
 (e.g. by plotting (fitted values + residual values) against (observed values) or by computing the 
 differences, which should all be 0).
 ```{r e}
+res.p.fit <- resid(ozo1) + fitted(ozo1) #Sum the vectors of the residuals and fitted values
+plot(ozo.trans ~ res.p.fit)  #Plot the summed values against the observed values 
+abline(0,1) #Perfect 1:1 line (i.e., the values are identical)
 
+ozo.norm - res.p.fit  #Can also double check by computing the differences (which = 0)
 ```
 
 **f.**
