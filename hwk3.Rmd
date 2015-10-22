@@ -134,6 +134,34 @@ should roughly fall on a straight line:
    ```qqline(resid(ozo1))```
 ```{r f}
 
+par(mfrow = c(2,2))               #set up the graphics window for 4 panels
+
+#1.
+plot(resid(ozo1) ~ fitted(ozo1))  #plot residuals against fitted values
+abline(h=0)                       #add horizontal line at zero
+
+#2.
+plot(resid(ozo1) ~ wind)          #plot residuals against wind
+abline(h=0)                       #add horizontal line at zero
+
+#3
+plot(resid(ozo1) ~ temperature)   #plot residuals against temperature
+abline(h=0)                       #add horizontal line at zero
+
+#4
+qqnorm(resid(ozo1))               #qqplot to check for normality.
+qqline(resid(ozo1))
+
+#The assumptions we can examine using these plots are as follows:
+#   Independence of variables: Appears to be met.  There are not obvious patterns when the
+#                              residuals are plotted against fitted values/variables                            
+#   Equality of variances: Mostly looks ok.  The variability looks a little lower on the right
+#                          side of the residuals ~ wind plot.  Maybe also in the 
+#                          residuals ~ fitted plot?
+#   Normality: This looks pretty good.  The values dip a little off the line at the extremes,
+#              but overall not concerning
+
+#So, in summary, it looks like the assumptions are probably met (or close enough)
 ```
 
 <span style="color:blue"> Briefly discuss whether the regression assumptions are met: There should be no obvious patterns in the residuals (i.e. they should be randomly distributed around the zero line), no 
