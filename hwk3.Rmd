@@ -42,7 +42,7 @@ hist(ozone^(1/3)) #The 3rd root transformation brings the data much closer to no
 
 **b.**
 <span style="color:red">(0.5 pt.)</span> Fit a LOWESS model of (transformed) ozone levels on wind and temperature using the 'loess' function, similar to the model for GAK 1 temperatures that we fit in Module 8:
-```{r b, eval=FALSE}
+```{r b}
 ozo.trans <- ozone^(1/3) #make an object of the transformed ozone data
 ozo1 <- loess(ozo.trans ~ wind + temperature, span = 1, degree = 2) 
                           #Fit a LOWESS model to the transformed ozone data on
