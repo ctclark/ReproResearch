@@ -240,6 +240,14 @@ contourplot(fit ~ wind + temperature, data = grd,
  ylab = "Temperature (F)",  
  main = "Cube Root Ozone (cube root ppb)",  
  col.regions = terrain.colors(50))
+grd[, "fit"] <- c(predict(ozo1, grd)) #Add the fitted values to the matrix
+contourplot(fit ~ wind + temperature, data = grd, 
+            cuts = 10, region = TRUE, xlab = "Wind Speed (mph)",
+            ylab = "Temperature (F)", main = "Cube Root Ozone (cube root ppb)",
+            col.regions = terrain.colors(50))
+
+#I like the first plot better.  The transitions appear smoother and less blocky. This
+#plot still has troubles in the top right corner.  I like that it has a scale.
 ```
 
 **i.**
