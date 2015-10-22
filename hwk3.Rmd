@@ -26,7 +26,17 @@ Plot a histogram of ozone using *'hist'*. Compare a histogram of these "raw" ozo
 why we would want to transform the ozone variable if used as dependent variable in a typical regression (this requires some familiarity with standard regression assumptions).</span> 
 
 ```{r a}
+library(lattice)
+?environmental
+attach(environmental)
 
+hist(ozone) #These data are not normal.  
+            #Large positive skew (lots of values near minimum, long tail out to right)
+
+hist(ozone^(1/3)) #The 3rd root transformation brings the data much closer to normality
+                  #The histogram approximates a bell curve and the mean has moved away
+                  #from the minimum value. This helps meet the normality assumption
+                  #required for many parametric statistics
 ```
 
 
