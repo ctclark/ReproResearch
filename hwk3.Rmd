@@ -262,6 +262,17 @@ different ozone response to temperature and wind conditions at different levels 
 ```{r i, eval=FALSE}
 ozo2 <- loess(ozone ~ wind+temperature+radiation, data = enviro, span=1, degree=2)
 summary(ozo2)
+ozo2 <- loess(ozo.trans ~ wind + temperature + radiation, span = 1, degree = 2)
+summary(ozo2)  #The number of observations has stayed the same and the equivalent number
+               #of parameters has increased (as would be expected)
+
+anova(ozo1, ozo2)
+
+#The F-test indicates a reduction in the RSS of 5.959, with an increase of 4.49
+#"equivalent parameters"
+
+#The probability we would get an F value as large as the observed one under the null
+#hypothesis is very small < 0.07%.  Thus, the more complex model appears to be better.
 ```
 
 Use an approximate F-test to compare the model fits:  
