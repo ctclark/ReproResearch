@@ -1,6 +1,5 @@
 ---
 title: "FISH 627: Homework 3"
-author: "Your Name Here"
 author: "Casey Clark"
 date: "Due by end of Thursday, October 22, 2015"
 output: html_document
@@ -44,7 +43,6 @@ hist(ozone^(1/3)) #The 3rd root transformation brings the data much closer to no
 **b.**
 <span style="color:red">(0.5 pt.)</span> Fit a LOWESS model of (transformed) ozone levels on wind and temperature using the 'loess' function, similar to the model for GAK 1 temperatures that we fit in Module 8:
 ```{r b, eval=FALSE}
-ozol <- loess(formula, span = 1, degree = 2)
 ozo.trans <- ozone^(1/3) #make an object of the transformed ozone data
 ozo1 <- loess(ozo.trans ~ wind + temperature, span = 1, degree = 2) 
                           #Fit a LOWESS model to the transformed ozone data on
@@ -133,7 +131,6 @@ should roughly fall on a straight line:
    ```qqnorm(resid(ozo1))```  
    ```qqline(resid(ozo1))```
 ```{r f}
-
 par(mfrow = c(2,2))               #set up the graphics window for 4 panels
 
 #1.
@@ -233,13 +230,6 @@ Compare your image plot to an alternative solution that uses the lattice functio
 'contourplot', which automatically adds a legend. It works somewhat differently and we need 
 to add the fitted values to the 'grd' matrix in order to use it:
 ```{r h, eval=FALSE}
-grd[, "fit"] <- c(predict(ozo1, grd))  
-contourplot(fit ~ wind + temperature, data = grd,  
- cuts = 10, region = TRUE,  
- xlab = "Wind Speed (mph)",  
- ylab = "Temperature (F)",  
- main = "Cube Root Ozone (cube root ppb)",  
- col.regions = terrain.colors(50))
 grd[, "fit"] <- c(predict(ozo1, grd)) #Add the fitted values to the matrix
 contourplot(fit ~ wind + temperature, data = grd, 
             cuts = 10, region = TRUE, xlab = "Wind Speed (mph)",
@@ -260,8 +250,6 @@ more flexible in a LOWESS model than in a linear model). The model essentially a
 different ozone response to temperature and wind conditions at different levels of solar radiation:
 
 ```{r i, eval=FALSE}
-ozo2 <- loess(ozone ~ wind+temperature+radiation, data = enviro, span=1, degree=2)
-summary(ozo2)
 ozo2 <- loess(ozo.trans ~ wind + temperature + radiation, span = 1, degree = 2)
 summary(ozo2)  #The number of observations has stayed the same and the equivalent number
                #of parameters has increased (as would be expected)
@@ -332,11 +320,6 @@ pred <- predict(ozo2, grd) #Predict ozone values based on ozo2 model
 grd[,"fit"] <- c(pred) #Add them to the grid. I think the .pdf has a typo here (no "c()")
 
 contourplot(fit ~ wind * temperature | radiation, data = grd,
- cuts = 10, region = TRUE,
- xlab = "Wind Speed (mph)",
- ylab = "Temperature (F)",
- main = "Cube Root Ozone (cube root ppb)",
- col.regions = terrain.colors(50))
             cuts = 10, region = TRUE, xlab = "Wind Speed (mph)",
             ylab = "Temperature (F)", main = "Cube Root Ozone (cube root ppb)",
             col.regions = terrain.colors(50))
