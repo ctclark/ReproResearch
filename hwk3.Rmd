@@ -249,7 +249,7 @@ on three independent variables with all possible interactions. (where the "inter
 more flexible in a LOWESS model than in a linear model). The model essentially allows for a 
 different ozone response to temperature and wind conditions at different levels of solar radiation:
 
-```{r i, eval=FALSE}
+```{r i}
 ozo2 <- loess(ozo.trans ~ wind + temperature + radiation, span = 1, degree = 2)
 summary(ozo2)  #The number of observations has stayed the same and the equivalent number
                #of parameters has increased (as would be expected)
