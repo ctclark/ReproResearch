@@ -74,7 +74,13 @@ values around the fitted values and is typically quantified by the 'residual sta
 You can view the residual standard error in the summary output using:  
 ```summary(ozo1)```
 ```{r d}
+summary(ozo1)   #Residual standard error = 0.501
 
+p <- summary(ozo1)$enp  #extract the expected number of parameters
+n <- summary(ozo1)$n    #extract the number of observations
+
+resid.se <- sqrt(((sum(resid(ozo1)^2)))/(n - p))  #directly calculate RSE
+resid.se     # = 0.497  pretty close to the RSE given in the summary
 ```
 
 For comparison, compute the standard error directly from the residuals. The residual standard error can be estimated as:  
