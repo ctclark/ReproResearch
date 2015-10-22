@@ -113,7 +113,7 @@ res.p.fit <- resid(ozo1) + fitted(ozo1) #Sum the vectors of the residuals and fi
 plot(ozo.trans ~ res.p.fit)  #Plot the summed values against the observed values 
 abline(0,1) #Perfect 1:1 line (i.e., the values are identical)
 
-ozo.norm - res.p.fit  #Can also double check by computing the differences (which = 0)
+ozo.trans - res.p.fit  #Can also double check by computing the differences (which = 0)
 ```
 
 **f.**
