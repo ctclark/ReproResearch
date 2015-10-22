@@ -229,7 +229,7 @@ points(wind, temperature, pch = 16, cex=1)  #plot the points where measurements 
 Compare your image plot to an alternative solution that uses the lattice function
 'contourplot', which automatically adds a legend. It works somewhat differently and we need 
 to add the fitted values to the 'grd' matrix in order to use it:
-```{r h, eval=FALSE}
+```{r h}
 grd[, "fit"] <- c(predict(ozo1, grd)) #Add the fitted values to the matrix
 contourplot(fit ~ wind + temperature, data = grd, 
             cuts = 10, region = TRUE, xlab = "Wind Speed (mph)",
@@ -311,7 +311,7 @@ Examine ```grd``` again to understand what you just did!
 Create a plot of the fitted values at different combinations of wind and temperature and at four 
 different levels of radiation:
 
-```{r j, eval=FALSE}
+```{r j}
 rad <- seq(min(radiation), max(radiation), length = 4)  #create a vector of 4 radiation values
 grd <- expand.grid(list(wind = wnd, temperature = temp, radiation = rad))
     #Add radiation values to the grid
