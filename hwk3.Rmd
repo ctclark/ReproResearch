@@ -313,13 +313,13 @@ different levels of radiation:
 
 ```{r j}
 rad <- seq(min(radiation), max(radiation), length = 4)  #create a vector of 4 radiation values
-grd <- expand.grid(list(wind = wnd, temperature = temp, radiation = rad))
+grd2 <- expand.grid(list(wind = wnd, temperature = temp, radiation = rad))
     #Add radiation values to the grid
 
-pred <- predict(ozo2, grd) #Predict ozone values based on ozo2 model
-grd[,"fit"] <- c(pred) #Add them to the grid. I think the .pdf has a typo here (no "c()")
+pred <- predict(ozo2, grd2) #Predict ozone values based on ozo2 model
+grd2[,"fit"] <- c(pred) #Add them to the grid. I think the .pdf has a typo here (no "c()")
 
-contourplot(fit ~ wind * temperature | radiation, data = grd,
+contourplot(fit ~ wind * temperature | radiation, data = grd2,
             cuts = 10, region = TRUE, xlab = "Wind Speed (mph)",
             ylab = "Temperature (F)", main = "Cube Root Ozone (cube root ppb)",
             col.regions = terrain.colors(50))
