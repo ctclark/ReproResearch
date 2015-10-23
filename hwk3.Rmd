@@ -328,6 +328,8 @@ contourplot(fit ~ wind * temperature | radiation, data = grd,
 #by green), then increase with increasing radiation (green shrinks, yellow and orange become
 #more apparent) and is highest at low wind speeds and high temperatures (left side and top
 #of plot)
+
+detach(environmental)
 ```
 
 In the resulting figure, the solar radiation level increases from the lower left panel to the upper 
